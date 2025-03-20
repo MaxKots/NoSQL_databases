@@ -34,38 +34,55 @@ services:
 
 volumes:
   mongodb_data:
+```
 
 Нужно скопировать к себе репозиторий и открыть терминал в этой директории и выполнить команду:
+```
 docker-compose up -d
+```
 
 Подключаемся:
+```
 docker exec -it mongodb mongosh "mongodb://admin:admin@localhost:27017"
+```
 
-Надо убедиться, что коллекицй нет с помощью команды show collections;
+Надо убедиться, что коллекицй нет с помощью команды:
+```
+show collections;
+```
 
 Создание коллекций:
+```
 use university;
 db.createCollection("Students");
 db.createCollection("Teachers");
 db.createCollection("Courses");
 db.createCollection("Grades");
 db.createCollection("Groups");
+```
 
-индексы:
+### индексы:
 Индекс на student_id в коллекции Grades для ускорения поиска оценок студента.
+```
 db.Grades.createIndex({ student_id: 1 });
+```
 
 Индекс на course_id в коллекции Grades для ускорения поиска оценок по курсу.
+```
 db.Grades.createIndex({ course_id: 1 });
+```
 
 Индекс на group в коллекции Students для ускорения поиска студентов по группе.
+```
 db.Students.createIndex({ group: 1 });
+```
 
 ## структура-базы-данных
+```plaintext
 Students ────< Grades >─── Courses
                 │
                 └─── Teachers
-
+```
 
 Все запросы не забыть положить в:
 
