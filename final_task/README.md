@@ -17,8 +17,7 @@
 
 Для поднятия MongoDB используется Docker Compose. Ниже приведён файл `docker-compose.yml`:
 
-```yaml
-version: '3.8'
+```version: '3.8'
 
 services:
   mongodb:
@@ -31,15 +30,23 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: admin
     volumes:
       - mongodb_data:/data/db
+      - ~/NoSQL_databases/datagen:/scripts
 
 volumes:
   mongodb_data:
 ```
 
-Нужно скопировать к себе репозиторий и открыть директорию с docker-compose файлом: 
-```NoSQL_databases/final_task/```
+это монтирует директорию /home/max/NoSQL_databases с вашего хоста в директорию /scripts внутри контейнера:
+```
+~/NoSQL_databases/datagen:/scripts
+```
 
-выполнить команду:
+Нужно скопировать к себе репозиторий и открыть директорию с docker-compose файлом: 
+```
+NoSQL_databases/final_task/
+```
+
+выполнить команду: 
 ```
 docker-compose up -d
 ```
