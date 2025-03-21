@@ -94,8 +94,9 @@ Students ────< Grades >─── Courses
                 └─── Teachers
 ```
 
-Все запросы не забыть положить в:
-
+## заполнение-базы-данных
+При запуске контейнера будут запущены заполняющие скрипты:
+```
     insertStudents.js
 
     insertTeachers.js
@@ -105,225 +106,26 @@ Students ────< Grades >─── Courses
     insertGroups.js
 
     insertGrades.js
+```
 
-## заполнение-базы-данных
-Заполнить бд простенькими данными:
+## Примеры запросов:
 
-1. Заполнение коллекции Students
+1. Получить всех студентов:
+```db.Students.find().pretty();
+```
 
-db.Students.insertMany([
-    {
-        name: "Иван",
-        surname: "Иванов",
-        group: "Группа 101",
-        faculty: "Факультет информатики",
-        year_of_admission: 2023
-    },
-    {
-        name: "Мария",
-        surname: "Петрова",
-        group: "Группа 102",
-        faculty: "Факультет математики",
-        year_of_admission: 2023
-    },
-    {
-        name: "Алексей",
-        surname: "Сидоров",
-        group: "Группа 101",
-        faculty: "Факультет информатики",
-        year_of_admission: 2023
-    },
-    {
-        name: "Елена",
-        surname: "Козлова",
-        group: "Группа 103",
-        faculty: "Факультет физики",
-        year_of_admission: 2023
-    },
-    {
-        name: "Ольга",
-        surname: "Новикова",
-        group: "Группа 102",
-        faculty: "Факультет математики",
-        year_of_admission: 2023
-    },
-    {
-        name: "Павел",
-        surname: "Морозов",
-        group: "Группа 101",
-        faculty: "Факультет информатики",
-        year_of_admission: 2023
-    }
-]);
-
-
-2. Заполнение коллекции Teachers
-
-db.Teachers.insertMany([
-    {
-        name: "Дмитрий",
-        surname: "Калугин-Балашов",
-        department: "Кафедра информатики",
-        academic_degree: "Доцент"
-    },
-    {
-        name: "Ольга",
-        surname: "Смирнова",
-        department: "Кафедра математики",
-        academic_degree: "Профессор"
-    },
-    {
-        name: "Андрей",
-        surname: "Васильев",
-        department: "Кафедра физики",
-        academic_degree: "Доцент"
-    },
-    {
-        name: "Екатерина",
-        surname: "Иванова",
-        department: "Кафедра информатики",
-        academic_degree: "Старший преподаватель"
-    }
-]);
-
-
-3. Заполнение коллекции Courses
-
-const teacher1 = db.Teachers.findOne({ surname: "Калугин-Балашов" })._id;
-const teacher2 = db.Teachers.findOne({ surname: "Смирнова" })._id;
-const teacher3 = db.Teachers.findOne({ surname: "Васильев" })._id;
-const teacher4 = db.Teachers.findOne({ surname: "Иванова" })._id;
-
-db.Courses.insertMany([
-    {
-        course_name: "Базы данных",
-        teacher_id: teacher1,
-        credits: 5
-    },
-    {
-        course_name: "Математический анализ",
-        teacher_id: teacher2,
-        credits: 6
-    },
-    {
-        course_name: "Физика",
-        teacher_id: teacher3,
-        credits: 4
-    },
-    {
-        course_name: "Программирование на Python",
-        teacher_id: teacher4,
-        credits: 5
-    },
-    {
-        course_name: "Дискретная математика",
-        teacher_id: teacher2,
-        credits: 4
-    },
-    {
-        course_name: "Операционные системы",
-        teacher_id: teacher1,
-        credits: 5
-    }
-]);
-
-
-4. Заполнение коллекции Grades
-
-const student1 = db.Students.findOne({ surname: "Иванов" })._id;
-const student2 = db.Students.findOne({ surname: "Петрова" })._id;
-const student3 = db.Students.findOne({ surname: "Сидоров" })._id;
-const student4 = db.Students.findOne({ surname: "Козлова" })._id;
-const student5 = db.Students.findOne({ surname: "Новикова" })._id;
-const student6 = db.Students.findOne({ surname: "Морозов" })._id;
-
-const course1 = db.Courses.findOne({ course_name: "Базы данных" })._id;
-const course2 = db.Courses.findOne({ course_name: "Математический анализ" })._id;
-const course3 = db.Courses.findOne({ course_name: "Физика" })._id;
-const course4 = db.Courses.findOne({ course_name: "Программирование на Python" })._id;
-const course5 = db.Courses.findOne({ course_name: "Дискретная математика" })._id;
-const course6 = db.Courses.findOne({ course_name: "Операционные системы" })._id;
-
-db.Grades.insertMany([
-    {
-        student_id: student1,
-        course_id: course1,
-        grade: 8,
-        date: new Date("2023-10-01")
-    },
-    {
-        student_id: student2,
-        course_id: course2,
-        grade: 9,
-        date: new Date("2023-10-02")
-    },
-    {
-        student_id: student3,
-        course_id: course1,
-        grade: 7,
-        date: new Date("2023-10-03")
-    },
-    {
-        student_id: student4,
-        course_id: course3,
-        grade: 10,
-        date: new Date("2023-10-04")
-    },
-    {
-        student_id: student5,
-        course_id: course4,
-        grade: 8,
-        date: new Date("2023-10-05")
-    },
-    {
-        student_id: student6,
-        course_id: course5,
-        grade: 6,
-        date: new Date("2023-10-06")
-    },
-    {
-        student_id: student1,
-        course_id: course6,
-        grade: 9,
-        date: new Date("2023-10-07")
-    },
-    {
-        student_id: student2,
-        course_id: course1,
-        grade: 7,
-        date: new Date("2023-10-08")
-    },
-    {
-        student_id: student3,
-        course_id: course2,
-        grade: 8,
-        date: new Date("2023-10-09")
-    },
-    {
-        student_id: student4,
-        course_id: course4,
-        grade: 9,
-        date: new Date("2023-10-10")
-    }
-]);
-
-
-
-Примеры запросов:
-
-1.Получить всех студентов:
-db.Students.find().pretty();
-
-2.Получить все курсы, которые ведёт определённый преподаватель:
-const teacherId = db.Teachers.findOne({ surname: "Калугин-Балашов" })._id;
+2. Получить все курсы, которые ведёт определённый преподаватель:
+```const teacherId = db.Teachers.findOne({ surname: "Калугин-Балашов" })._id;
 db.Courses.find({ teacher_id: teacherId }).pretty();
+```
 
-3.Получить все оценки студента:
-const studentId = db.Students.findOne({ surname: "Иванов" })._id;
+3. Получить все оценки студента:
+```const studentId = db.Students.findOne({ surname: "Иванов" })._id;
 db.Grades.find({ student_id: studentId }).pretty();
+```
 
 4. Найти средний балл каждого студента
-db.Grades.aggregate([
+```db.Grades.aggregate([
   {
     $group: {
       _id: "$student_id",
@@ -350,10 +152,10 @@ db.Grades.aggregate([
     }
   }
 ]);
+```
 
-
-2. Найти студентов, у которых есть хотя бы одна оценка выше 8
-db.Grades.aggregate([
+5. Найти студентов, у которых есть хотя бы одна оценка выше 8
+```db.Grades.aggregate([
   {
     $match: { grade: { $gt: 8 } }
   },
@@ -376,9 +178,10 @@ db.Grades.aggregate([
     }
   }
 ]);
+```
 
-3. Найти количество студентов на каждом факультете
-db.Students.aggregate([
+6. Найти количество студентов на каждом факультете
+```db.Students.aggregate([
   {
     $group: {
       _id: "$faculty",
@@ -386,10 +189,10 @@ db.Students.aggregate([
     }
   }
 ]);
+```
 
-4. Найти курсы, которые ведёт определённый преподаватель
-
-db.Teachers.aggregate([
+7. Найти курсы, которые ведёт определённый преподаватель
+```db.Teachers.aggregate([
   {
     $match: { surname: "Калугин-Балашов" }
   },
@@ -411,11 +214,10 @@ db.Teachers.aggregate([
     }
   }
 ]);
+```
 
-
-
-5. Найти студентов, которые учатся на факультете "Факультет информатики" и имеют оценки выше 9
-db.Grades.aggregate([
+8. Найти студентов, которые учатся на факультете "Факультет информатики" и имеют оценки выше 9
+```db.Grades.aggregate([
   {
     $match: { grade: { $gt: 9 } }
   },
@@ -441,9 +243,10 @@ db.Grades.aggregate([
     }
   }
 ]);
+```
 
-6. Найти средний балл по каждому курсу
-db.Grades.aggregate([
+9. Найти средний балл по каждому курсу
+```db.Grades.aggregate([
   {
     $group: {
       _id: "$course_id",
@@ -469,9 +272,10 @@ db.Grades.aggregate([
     }
   }
 ]);
+```
 
-7. Найти студентов, которые не получили ни одной оценки
-db.Students.aggregate([
+10. Найти студентов, которые не получили ни одной оценки
+```db.Students.aggregate([
   {
     $lookup: {
       from: "Grades",
@@ -491,9 +295,10 @@ db.Students.aggregate([
     }
   }
 ]);
+```
 
-8. Найти преподавателя с наибольшим количеством курсов
-db.Courses.aggregate([
+11. Найти преподавателя с наибольшим количеством курсов
+```db.Courses.aggregate([
   {
     $group: {
       _id: "$teacher_id",
@@ -526,10 +331,10 @@ db.Courses.aggregate([
     }
   }
 ]);
+```
 
-
-9. Найти студентов, которые сдали все курсы на отлично (оценка 10)
-db.Grades.aggregate([
+12. Найти студентов, которые сдали все курсы на отлично (оценка 10)
+```db.Grades.aggregate([
   {
     $group: {
       _id: "$student_id",
@@ -558,7 +363,7 @@ db.Grades.aggregate([
     }
   }
 ]);
-
+```
 
 На всякий случай приложу гайд, как подключиться через dbeaver:
 
