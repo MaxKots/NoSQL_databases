@@ -371,13 +371,13 @@ db.Grades.find({ student_id: studentId }).pretty();
 mongodb://admin:admin@localhost:27017:
 DBeaver Community Edition не поддерживает MongoDB "из коробки", но вы можете установить драйвер вручную.
 
-    Откройте DBeaver.
+    Открой DBeaver.
 
-    Перейдите в меню Database → Driver Manager.
+    Перейди в меню Database → Driver Manager.
 
-    Нажмите кнопку New для создания нового драйвера.
+    Нажми кнопку New для создания нового драйвера.
 
-    Заполните поля:
+    Заполни поля:
 
         Driver Name: MongoDB
 
@@ -387,31 +387,31 @@ DBeaver Community Edition не поддерживает MongoDB "из короб
 
         Default Port: 27017
 
-    На вкладке Libraries нажмите Add File и добавьте файл JAR-драйвера MongoDB(находится в корневой папке проекта)
+    На вкладке Libraries нажми Add File и добавь файл JAR-драйвера MongoDB(находится в корневой папке проекта)
 
-    Нажмите OK, чтобы сохранить драйвер.
+    Нажми OK, чтобы сохранить драйвер.
 
 
-2. Создайте подключение к MongoDB
+2. Создай подключение к MongoDB
 
-    В DBeaver нажмите Database → New Database Connection.
+    В DBeaver нажми Database → New Database Connection.
 
-    Выберите MongoDB из списка баз данных.
+    Выбери MongoDB из списка баз данных.
 
-    Заполните параметры подключения:
+    Заполни параметры подключения:
 
         Host: localhost (или IP-адрес сервера MongoDB).
 
         Port: 27017 (стандартный порт MongoDB).
 
-        Database: Название вашей базы данных (например, university).
+        Database: Название базы (например, university).
 
         Authentication:
 
-            Если используется аутентификация, укажите Username и Password (например, admin/admin, если вы использовали настройки из docker-compose.yml).
+            Если используется аутентификация, укажи Username и Password (например, admin/admin, если вы использовались настройки из docker-compose.yml).
 
-    Нажмите Test Connection, чтобы проверить подключение.
+    Нажми Test Connection, чтобы проверить подключение.
 
-    Если подключение успешно, нажмите Finish.
+    Если подключение успешно, нажми Finish.
 
 
