@@ -416,4 +416,3 @@ DBeaver Community Edition не поддерживает MongoDB "из короб
     Если подключение успешно, нажми Finish.
 
 
-
