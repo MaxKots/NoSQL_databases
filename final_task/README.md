@@ -36,7 +36,7 @@ volumes:
   mongodb_data:
 ```
 
-это монтирует директорию /home/max/NoSQL_databases с вашего хоста в директорию /scripts внутри контейнера:
+эта команда монтирует директорию /home/max/NoSQL_databases с хоста в директорию /scripts внутри контейнера:
 ```
 ~/NoSQL_databases/datagen:/scripts
 ```
