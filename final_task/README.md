@@ -30,7 +30,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: admin
     volumes:
       - mongodb_data:/data/db
-      - ~/NoSQL_databases/datagen:/scripts
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./queries:/scripts
 
 volumes:
   mongodb_data:
