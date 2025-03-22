@@ -37,9 +37,9 @@ volumes:
   mongodb_data:
 ```
 
-эта команда монтирует директорию /home/max/NoSQL_databases с хоста в директорию /scripts внутри контейнера:
+эта команда монтирует директорию /home/max/NoSQL_databases(в моем случае) с хоста в директорию /scripts внутри контейнера:
 ```
-~/NoSQL_databases/datagen:/scripts
+./queries:/scripts
 ```
 
 Нужно скопировать к себе репозиторий и открыть директорию с docker-compose файлом: 
