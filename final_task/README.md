@@ -4,6 +4,7 @@
 
 ---
 
+## Google-документ с описанием и скришнотами по [ссылке](https://docs.google.com/document/d/1EXbAObt53tXJGGJxyKNN0-Hfd-cvbQRkotvGVbGSoMU/edit?tab=t.0)
 ## Содержание
 1. [Запуск MongoDB с помощью Docker](#запуск-mongodb-с-помощью-docker)
 2. [Структура базы данных](#структура-базы-данных)
